@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginStepOneFragment"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/lso_tv_header"
+        style="@style/Widget.TestApp1.TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lso_header"
+        android:textAppearance="@style/TextAppearance.TestApp1.Headline4.5" />
+
+    <TextView
+        android:id="@+id/lso_tv_explanation"
+        style="@style/Widget.TestApp1.TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lso_tv_explanation"
+        android:textAppearance="@style/TextAppearance.TestApp1.Body00" />
+
+    <TextView
+        android:id="@+id/lso_tv_phone_number_header"
+        style="@style/Widget.TestApp1.TextView.EditTextLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lso_tv_phone_number_header"
+        android:textAppearance="@style/TextAppearance.TestApp1.Subtitle1.Bold" />
+
+    <EditText
+        android:id="@+id/lso_et_phone_number"
+        style="@style/Widget.TestApp1.EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/lso_et_phone_number_hint"
+        android:inputType="phone"
+        android:maxLength="@integer/login_field_max_length"
+        android:textAppearance="@style/TextAppearance.TestApp1.Body00"
+        tools:ignore="TextContrastCheck"
+        android:importantForAutofill="no" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/lso_mb_next"
+        style="@style/Widget.TestApp1.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/button_height"
+        android:text="@string/lso_mb_next"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+    <TextView
+        android:id="@+id/lso_tv_rules"
+        style="@style/Widget.TestApp1.TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lso_tv_rules"
+        android:textAppearance="@style/TextAppearance.TestApp1.Body01" />
+</LinearLayout>

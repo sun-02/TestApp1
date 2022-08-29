@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- general -->
+    <dimen name="min_height">48dp</dimen>
+    <dimen name="button_height">64dp</dimen>
+    <dimen name="et_height">56dp</dimen>
+
+    <!-- margins -->
+    <dimen name="margin_tiny">4dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_large_plus">28dp</dimen>
+    <dimen name="margin_huge">32dp</dimen>
+    <dimen name="margin_huge_plus">42dp</dimen>
+
+    <!-- font attrs -->
+    <dimen name="body0_size">20sp</dimen>
+    <dimen name="body01_size">18sp</dimen>
+    <dimen name="headline4_5_size">34sp</dimen>
+    <integer name="body00_letter_spacing">0</integer>
+    <integer name="login_field_max_length">12</integer>
+</resources>

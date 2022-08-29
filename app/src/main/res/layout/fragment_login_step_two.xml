@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginStepTwoFragment"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/lst_tv_header"
+        style="@style/Widget.TestApp1.TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lst_header"
+        android:textAppearance="@style/TextAppearance.TestApp1.Headline4.5" />
+
+    <TextView
+        android:id="@+id/lst_tv_explanation"
+        style="@style/Widget.TestApp1.TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lst_tv_explanation"
+        android:textAppearance="@style/TextAppearance.TestApp1.Body00" />
+
+    <EditText
+        android:id="@+id/lst_et_code"
+        style="@style/Widget.TestApp1.EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_large"
+        android:importantForAutofill="no"
+        android:inputType="numberPassword"
+        android:maxLength="@integer/login_field_max_length"
+        android:textAppearance="@style/TextAppearance.TestApp1.Body00"
+        tools:ignore="TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/lst_tv_send_again"
+        style="@style/Widget.TestApp1.TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_large"
+        android:text="@string/lst_tv_send_again"
+        android:textAppearance="@style/TextAppearance.TestApp1.Body01" />
+</LinearLayout>

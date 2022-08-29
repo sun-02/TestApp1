@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Test App1</string>
+
+    <!-- Login step one fragment -->
+    <string name="lso_header">Войти</string>
+    <string name="lso_tv_explanation">Введите номер телефона, чтобы войти или зарегистрироваться</string>
+    <string name="lso_tv_phone_number_header">Номер телефона</string>
+    <string name="lso_tv_rules">Нажимая кнопку \u00ABДалее\u00BB, вы соглашаетесь с условиями пользовательского соглашения и обработкой вашей персональной информации на условиях политики конфиденциальности</string>
+    <string name="lso_et_phone_number_hint">+79001112233</string>
+    <string name="lso_mb_next">Далее</string>
+
+    <!-- login step two fragment -->
+    <string name="lst_header">Подтверждение телефона</string>
+    <string name="lst_tv_explanation">Введите код из SMS, отправленного на номер %1$s</string>
+    <string name="lst_tv_send_again">Отправить код еще раз %1$s</string>
+
+
+</resources>
