@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginStepOneFragment"
+    tools:context=".login.step.one.LoginStepOneFragment"
     android:orientation="vertical">
 
     <TextView
@@ -48,9 +48,19 @@
         style="@style/Widget.TestApp1.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:minHeight="@dimen/button_height"
         android:text="@string/lso_mb_next"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+    <TextView
+        android:id="@+id/lso_tv_try_again_timer"
+        style="@style/Widget.TestApp1.TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/lso_tv_try_again_timer"
+        android:visibility="gone"
+        android:textAppearance="@style/TextAppearance.TestApp1.Body01" />
 
     <TextView
         android:id="@+id/lso_tv_rules"

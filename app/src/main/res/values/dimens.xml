@@ -20,4 +20,5 @@
     <dimen name="headline4_5_size">34sp</dimen>
     <integer name="body00_letter_spacing">0</integer>
     <integer name="login_field_max_length">12</integer>
+    <integer name="code_field_max_length">4</integer>
 </resources>
