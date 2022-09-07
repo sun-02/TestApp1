@@ -2,8 +2,9 @@ package com.example.testapp1.login.step.two
 
 import android.graphics.Typeface
 import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableString
+import android.text.*
+import android.text.method.LinkMovementMethod
+import android.text.style.ClickableSpan
 import android.text.style.StyleSpan
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -15,10 +16,12 @@ import androidx.fragment.app.viewModels
 import com.example.testapp1.BuildConfig
 import com.example.testapp1.R
 import com.example.testapp1.databinding.FragmentLoginStepTwoBinding
+import com.example.testapp1.search.SearchFragment
 import com.google.android.material.snackbar.Snackbar
 
 private const val PHONE_NUMBER = "PhoneNumber"
 private const val EXPLAIN_MESSAGE = "ExplainMessage"
+private const val TIME_LEFT_SECONDS = "TimeLeftSeconds"
 private const val SESSION_ID = "SessionId"
 private const val TAG = "LoginStepOneFragment"
 
@@ -29,6 +32,7 @@ class LoginStepTwoFragment : Fragment() {
 
     private lateinit var phoneNumber: String
     private lateinit var explainMessage: String
+    private var timeLeftSeconds: Int = 0
 
     private val viewModel by viewModels<LoginStepTwoViewModel>()
 
@@ -37,6 +41,7 @@ class LoginStepTwoFragment : Fragment() {
         requireArguments().let {
             phoneNumber = it.getString(PHONE_NUMBER)!!
             explainMessage = it.getString(EXPLAIN_MESSAGE)!!
+            timeLeftSeconds = it.getInt(TIME_LEFT_SECONDS)
         }
     }
 
@@ -54,12 +59,25 @@ class LoginStepTwoFragment : Fragment() {
         val explainMessageSpanned = SpannableString(explainMessage).apply {
             setSpan(
                 StyleSpan(Typeface.BOLD),
-                explainMessage.indexOf('+'), explainMessage.length,
+                explainMessage.indexOf('+'),
+                explainMessage.length,
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         }
         binding.lstTvExplanation.text = explainMessageSpanned
 
-        binding.lstEtCode.addTextChangedListener(viewModel.getTextWatcher(phoneNumber))
+        val textWatcher = object : TextWatcher {
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                if (s!!.length == 4) {
+                    viewModel.requestSessionId(phoneNumber, s.toString())
+                }
+            }
+        }
+        binding.lstEtCode.addTextChangedListener(textWatcher)
 
         viewModel.errorMsg.observe(viewLifecycleOwner) { errMsg ->
             errMsg?.apply {
@@ -72,23 +90,57 @@ class LoginStepTwoFragment : Fragment() {
                 }
                 Snackbar.make(binding.root, snackMsg, Snackbar.LENGTH_INDEFINITE)
                     .setAction(R.string.snack_btn_retry) {
-                        viewModel.fetchSessionId(phoneNumber, binding.lstEtCode.text.toString())
+                        viewModel.requestSessionId(phoneNumber, binding.lstEtCode.text.toString())
                     }.show()
             }
         }
 
-        viewModel.loginStepTwoResponse.observe(viewLifecycleOwner) { response ->
-            Snackbar.make(
-                binding.root,
-                "Получен SessionId ${response.sessionId}",
-                Snackbar.LENGTH_LONG
-            ).show()
-//            parentFragmentManager.commit {
-//                val bundle = Bundle()
-//                bundle.putString(SESSION_ID, response.sessionId)
-//                replace(R.id.fragment_container_view, LoginStepTwoFragment::class.java, bundle)
-//                setReorderingAllowed(true)
-//            }
+        viewModel.startTimer(timeLeftSeconds * 1000L)
+
+        viewModel.timerIsOn.observe(viewLifecycleOwner) { timerIsOn ->
+            if (timerIsOn) {
+                setRequestAgainTvWithTimer(viewModel.timeLeftSeconds.value!!)
+            } else {
+                setRequestAgainTvClickable()
+            }
         }
+
+        viewModel.timeLeftSeconds.observe(viewLifecycleOwner) { timeLeft ->
+            setRequestAgainTvWithTimer(timeLeft)
+        }
+
+        viewModel.loginStepTwoResponseData.observe(viewLifecycleOwner) { responseData ->
+            parentFragmentManager.commit {
+                val bundle = Bundle()
+                bundle.putString(SESSION_ID, responseData.sessionId)
+                replace(R.id.fragment_container_view, SearchFragment::class.java, bundle)
+                setReorderingAllowed(true)
+            }
+        }
+    }
+
+    private fun setRequestAgainTvWithTimer(timeLeft: Int) {
+        binding.lstTvRequestAgain.text = getString(R.string.lso_tv_try_again_timer, timeLeft)
+    }
+
+    private fun setRequestAgainTvClickable() {
+        val str = getString(R.string.lst_tv_request_again)
+        val spannableString = SpannableString(str)
+        val clickableSpan: ClickableSpan = object : ClickableSpan() {
+            override fun onClick(widget: View) {
+                viewModel.requestNewCode(phoneNumber)
+            }
+
+            override fun updateDrawState(ds: TextPaint) {
+                super.updateDrawState(ds)
+                ds.isUnderlineText = false
+            }
+        }
+        spannableString.setSpan(clickableSpan, 0, str.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        binding.lstTvRequestAgain.text = spannableString
+        if (binding.lstTvRequestAgain.movementMethod == null) {
+            binding.lstTvRequestAgain.movementMethod = LinkMovementMethod.getInstance()
+        }
+        binding.lstEtCode.setText("")
     }
 }

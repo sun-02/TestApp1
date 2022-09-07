@@ -1,6 +1,8 @@
 package com.example.testapp1.login.step.one
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,6 +18,7 @@ import com.google.android.material.snackbar.Snackbar
 
 private const val PHONE_NUMBER = "PhoneNumber"
 private const val EXPLAIN_MESSAGE = "ExplainMessage"
+private const val TIME_LEFT_SECONDS = "TimeLeftSeconds"
 private const val TAG = "LoginStepOneFragment"
 
 class LoginStepOneFragment : Fragment() {
@@ -36,7 +39,28 @@ class LoginStepOneFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.lsoEtPhoneNumber.addTextChangedListener(viewModel.getTextWatcher())
+
+
+        val textWatcher = object : TextWatcher {
+            private var changedInternally = false
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                if (changedInternally) {
+                    changedInternally = false
+                    return
+                }
+                val str = s!!.toString()
+                if (str.isNotBlank() && str[0] != '+') {
+                    s.insert(0, "+")
+                }
+                viewModel.checkPhoneNumber(s.toString())
+            }
+        }
+        binding.lsoEtPhoneNumber.addTextChangedListener(textWatcher)
 
         viewModel.phoneNumberIsCorrect.observe(viewLifecycleOwner) { isCorrect ->
             if (viewModel.timerIsOn.value == true) {
@@ -56,24 +80,33 @@ class LoginStepOneFragment : Fragment() {
                     getString(R.string.snack_msg_rest_error)
                 }
                 Snackbar.make(binding.root, snackMsg, Snackbar.LENGTH_LONG).show()
+                viewModel.startTimer()
             }
         }
 
         binding.lsoMbNext.setOnClickListener {
-            viewModel.sendCode(binding.lsoEtPhoneNumber.toString())
+            viewModel.requestCode(binding.lsoEtPhoneNumber.text.toString())
         }
 
-        viewModel.loginStepOneResponse.observe(viewLifecycleOwner) { response ->
-            if (response.successful) {
+        viewModel.loginStepOneResponseData.observe(viewLifecycleOwner) { responseData ->
+            if (responseData.successful) {
+                viewModel.clearResponse()
                 parentFragmentManager.commit {
                     val bundle = Bundle()
-                    bundle.putString(PHONE_NUMBER, response.normalizedPhone)
-                    bundle.putString(EXPLAIN_MESSAGE, response.explainMessage)
+                    bundle.putString(PHONE_NUMBER, responseData.normalizedPhone)
+                    bundle.putString(EXPLAIN_MESSAGE, responseData.explainMessage)
+                    val timeLeft = viewModel.timeLeftSeconds.value?.toInt()
+                    if (timeLeft == null || timeLeft == 0) {
+                        bundle.putInt(TIME_LEFT_SECONDS, 60)
+                    } else {
+                        bundle.putInt(TIME_LEFT_SECONDS, timeLeft)
+                    }
                     replace(R.id.fragment_container_view, LoginStepTwoFragment::class.java, bundle)
                     setReorderingAllowed(true)
+                    addToBackStack(null)
                 }
             } else {
-                Snackbar.make(binding.root, response.errorMessage, Snackbar.LENGTH_LONG).show()
+                Snackbar.make(binding.root, responseData.errorMessage, Snackbar.LENGTH_LONG).show()
                 viewModel.startTimer()
             }
         }
@@ -88,7 +121,7 @@ class LoginStepOneFragment : Fragment() {
             }
         }
 
-        viewModel.timeLeft.observe(viewLifecycleOwner) { timeLeft ->
+        viewModel.timeLeftSeconds.observe(viewLifecycleOwner) { timeLeft ->
             if (binding.lsoTvTryAgainTimer.visibility == View.VISIBLE) {
                 binding.lsoTvTryAgainTimer.text = getString(R.string.lso_tv_try_again_timer, timeLeft)
             }

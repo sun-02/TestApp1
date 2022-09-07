@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/drawable/card_background.xml" value="0.133" />
+        <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/layout/fragment_login_step_one.xml" value="0.33" />
         <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/layout/fragment_login_step_two.xml" value="0.33" />
+        <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/layout/fragment_search.xml" value="0.11458333333333333" />
+        <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/layout/item_campaign.xml" value="0.25" />
+        <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/layout/item_product.xml" value="0.1" />
         <entry key="..\:/Users/sun/AndroidStudioProjects/test/TestApp1/app/src/main/res/layout/activity_main.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/sun/AndroidStudioProjects/test/TestApp1/app/src/main/res/layout/fragment_login_step_one.xml" value="0.33" />
         <entry key="..\:/Users/sun/AndroidStudioProjects/test/TestApp1/app/src/main/res/layout/fragment_login_step_two.xml" value="0.33" />

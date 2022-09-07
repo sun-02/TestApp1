@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_medium"
+        android:elevation="@dimen/elevation">
+
+        <ImageView
+            android:id="@+id/ic_iv_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_background"
+            android:contentDescription="@string/action_provider_image_desc"
+            android:scaleType="centerCrop"
+            tools:ignore="ImageContrastCheck"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/ic_tv_cashback"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ic_tv_name_stub"
+            android:textAppearance="@style/TextAppearance.TestApp1.Body1" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/ic_tv_name"
+        style="@style/Widget.TestApp1.TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ic_tv_name_stub"
+        android:textAppearance="@style/TextAppearance.TestApp1.Body00.Bold" />
+
+</LinearLayout>

@@ -36,11 +36,11 @@
         tools:ignore="TextContrastCheck,SpeakableTextPresentCheck" />
 
     <TextView
-        android:id="@+id/lst_tv_send_again"
+        android:id="@+id/lst_tv_request_again"
         style="@style/Widget.TestApp1.TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_large"
-        android:text="@string/lst_tv_send_again"
+        android:text="@string/lst_tv_request_again"
         android:textAppearance="@style/TextAppearance.TestApp1.Body01" />
 </LinearLayout>

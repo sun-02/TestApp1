@@ -12,13 +12,27 @@
 
     <!-- login step two fragment -->
     <string name="lst_header">Подтверждение телефона</string>
-    <string name="lst_tv_explanation">Введите код из SMS, отправленного на номер %1$s</string>
-    <string name="lst_tv_send_again">Отправить код еще раз %1$s</string>
+    <string name="lst_tv_explanation">Введите код из SMS, отправленного на номер +79001112233</string>
+    <string name="lst_tv_request_again">Отправить код еще раз</string>
+    <string name="lst_tv_send_again_timer">Отправить код еще раз можно будет через %1$d сек.</string>
     <string name="lst_et_code_hint">код</string>
 
     <!-- snackbar -->
     <string name="snack_msg_no_connection">Нет связи с сервером.%nПроверьте интернет соединение.</string>
     <string name="snack_msg_rest_error">Ошибка обращения к серверу.%nПопробуйте еще раз.</string>
     <string name="snack_btn_retry">Повторить</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="ic_tv_name_stub"><![CDATA[AliExpress RU&CIS NEW]]></string>
+    <string name="action_provider_image_desc">Action provider image</string>
 
 </resources>
