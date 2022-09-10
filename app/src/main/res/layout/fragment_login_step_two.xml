@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/lst_tv_header"
-        style="@style/Widget.TestApp1.TextView"
+        style="@style/Widget.TestApp1.TextView.Main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/lst_header"
@@ -16,7 +16,7 @@
 
     <TextView
         android:id="@+id/lst_tv_explanation"
-        style="@style/Widget.TestApp1.TextView"
+        style="@style/Widget.TestApp1.TextView.Main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/lst_tv_explanation"
@@ -37,7 +37,7 @@
 
     <TextView
         android:id="@+id/lst_tv_request_again"
-        style="@style/Widget.TestApp1.TextView"
+        style="@style/Widget.TestApp1.TextView.Main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_large"

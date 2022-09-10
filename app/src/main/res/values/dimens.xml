@@ -6,6 +6,9 @@
     <dimen name="et_height">56dp</dimen>
     <dimen name="elevation">4dp</dimen>
     <dimen name="card_corner_radius">8dp</dimen>
+    <dimen name="campaign_image_min_size">150dp</dimen>
+    <dimen name="cashback_corner_radius">11dp</dimen>
+    <dimen name="cashback_height">22dp</dimen>
 
     <!-- margins -->
     <dimen name="margin_tiny">4dp</dimen>

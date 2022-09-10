@@ -1,43 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_medium"
-        android:elevation="@dimen/elevation">
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        style="@style/Widget.TestApp1.CardView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/ic_iv_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/card_background"
-            android:contentDescription="@string/action_provider_image_desc"
-            android:scaleType="centerCrop"
+            android:id="@+id/ic_iv_campaign"
+            style="@style/CampaignImageView"
+            android:contentDescription="@string/desc_campaign_image"
             tools:ignore="ImageContrastCheck"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <TextView
-            android:id="@+id/ic_tv_cashback"
+    </com.google.android.material.card.MaterialCardView>
 
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/ic_tv_name_stub"
-            android:textAppearance="@style/TextAppearance.TestApp1.Body1" />
 
-    </FrameLayout>
+    <TextView
+        android:id="@+id/ic_tv_cashback"
+        style="@style/Widget.TestApp1.TextView.Main.Cashback"
+        android:text="@string/cashback_stub"
+        android:textAppearance="@style/TextAppearance.TestApp1.Body1"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/cardView"
+        tools:ignore="TextContrastCheck" />
+
 
     <TextView
         android:id="@+id/ic_tv_name"
-        style="@style/Widget.TestApp1.TextView"
+        style="@style/Widget.TestApp1.TextView.Main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/ic_tv_name_stub"
-        android:textAppearance="@style/TextAppearance.TestApp1.Body00.Bold" />
+        android:textAppearance="@style/TextAppearance.TestApp1.Body00.Bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

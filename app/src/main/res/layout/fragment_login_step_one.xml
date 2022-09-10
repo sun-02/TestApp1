@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/lso_tv_header"
-        style="@style/Widget.TestApp1.TextView"
+        style="@style/Widget.TestApp1.TextView.Main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/lso_header"
@@ -16,7 +16,7 @@
 
     <TextView
         android:id="@+id/lso_tv_explanation"
-        style="@style/Widget.TestApp1.TextView"
+        style="@style/Widget.TestApp1.TextView.Main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/lso_tv_explanation"
@@ -24,7 +24,7 @@
 
     <TextView
         android:id="@+id/lso_tv_phone_number_header"
-        style="@style/Widget.TestApp1.TextView.EditTextLabel"
+        style="@style/Widget.TestApp1.TextView.Main.EditTextLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/lso_tv_phone_number_header"
@@ -55,7 +55,7 @@
 
     <TextView
         android:id="@+id/lso_tv_try_again_timer"
-        style="@style/Widget.TestApp1.TextView"
+        style="@style/Widget.TestApp1.TextView.Main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/lso_tv_try_again_timer"
@@ -64,7 +64,7 @@
 
     <TextView
         android:id="@+id/lso_tv_rules"
-        style="@style/Widget.TestApp1.TextView"
+        style="@style/Widget.TestApp1.TextView.Main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/lso_tv_rules"

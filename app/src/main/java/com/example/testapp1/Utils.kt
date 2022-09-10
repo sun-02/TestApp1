@@ -1,5 +1,16 @@
 package com.example.testapp1.login.step
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
+import android.widget.ImageView
+import androidx.appcompat.content.res.AppCompatResources
+import com.example.testapp1.BuildConfig
+import com.example.testapp1.R
 import com.example.testapp1.ServerResponse
 import org.json.JSONArray
 import org.json.JSONObject
@@ -49,4 +60,34 @@ fun JSONArray.toStringList(): List<String> {
         list.add(this.getString(i))
     }
     return list
+}
+
+fun ImageView.setImageFromUrl(imageURL: String): Drawable? {
+    val progressBar = AppCompatResources.getDrawable(context, R.drawable.progress_bar)
+    val handler = Handler(Looper.getMainLooper())
+    handler.post {
+        setImageDrawable(progressBar)
+    }
+    var bitmap: Bitmap? = null
+    try {
+        val stream = URL(imageURL).openStream()
+        bitmap = BitmapFactory.decodeStream(stream)
+    } catch (e: Exception) {
+        e.printStackTrace()
+    }
+
+    return if (bitmap == null) {
+        val stub = AppCompatResources.getDrawable(context, R.drawable.ic_no_image_48)
+        stub!!.setTint(com.google.android.material.R.attr.colorSecondary)
+        handler.post {
+            setImageDrawable(stub)
+        }
+        null
+    } else {
+        val newDrawable = BitmapDrawable(context.resources, bitmap)
+        handler.post {
+            setImageDrawable(newDrawable)
+        }
+        newDrawable
+    }
 }
