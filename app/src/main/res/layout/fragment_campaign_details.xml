@@ -1,68 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".details.CampaignDetailsFragment">
+    tools:context=".details.ProductDetailsFragment">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:visibility="invisible">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/fcd_tv_name"
-            style="@style/Widget.TestApp1.TextView.Main"
+        <LinearLayout
+            android:id="@+id/fcd_ll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:maxLines="6"
-            android:text="@tools:sample/lorem/random[0]"
-            android:textAppearance="@style/TextAppearance.TestApp1.Body000.Bold" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/fcd_iv_campaign"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_large"
-            android:layout_marginTop="@dimen/margin_small"
-            android:contentDescription="@string/desc_campaign_image"
-            tools:ignore="ImageContrastCheck"
-            tools:srcCompat="@android:drawable/button_onoff_indicator_on" />
+            <ImageView
+                android:id="@+id/fcd_iv_campaign"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_small"
+                android:contentDescription="@string/desc_campaign_image"
+                android:minHeight="@dimen/campaign_image_min_size"
+                android:scaleType="centerInside"
+                android:scaleX="3.5"
+                android:scaleY="3.5"
+                tools:ignore="ImageContrastCheck"
+                tools:srcCompat="@android:drawable/button_onoff_indicator_on" />
 
-        <TextView
-            android:id="@+id/fcd_tv_price"
-            style="@style/Widget.TestApp1.TextView.ProductPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_small"
-            android:textAppearance="@style/TextAppearance.TestApp1.Body0000.Bold"
-            tools:text="999,00 RUB" />
+            <TextView
+                android:id="@+id/fcd_tv_name"
+                style="@style/Widget.TestApp1.TextView.Main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:text="@tools:sample/lorem/random[0]"
+                android:textAppearance="@style/TextAppearance.TestApp1.Body0000.Bold"
+                tools:maxLines="2" />
 
-        <TextView
-            android:id="@+id/fcd_tv_cashback_label"
-            style="@style/Widget.TestApp1.TextView.Main"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_huge"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:text="@string/cashback_label"
-            android:textAppearance="@style/TextAppearance.TestApp1.Body000.Bold" />
+            <TextView
+                android:id="@+id/fcd_tv_cashback_label"
+                style="@style/Widget.TestApp1.TextView.Main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_huge"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:maxLines="1"
+                android:text="@string/cashback_label"
+                android:textAppearance="@style/TextAppearance.TestApp1.Body000.Bold" />
 
-        <TextView
-            android:id="@+id/fcd_tv_cashback"
-            style="@style/Widget.TestApp1.TextView.Main.Cashback.Details"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:text="@string/cashback_stub"
-            android:textAppearance="@style/TextAppearance.TestApp1.Body1"
-            tools:ignore="TextContrastCheck" />
+            <TextView
+                android:id="@+id/fcd_tv_cashback"
+                style="@style/Widget.TestApp1.TextView.Main.Cashback.Details"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:text="@string/cashback_stub"
+                android:textAppearance="@style/TextAppearance.TestApp1.Body1"
+                tools:ignore="TextContrastCheck" />
 
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+            <TextView
+                android:id="@+id/fcd_tv_payment_time_label"
+                style="@style/Widget.TestApp1.TextView.Main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:maxLines="1"
+                android:text="@string/cashback_time_interval_label"
+                android:textAppearance="@style/TextAppearance.TestApp1.Body000.Bold" />
+
+            <TextView
+                android:id="@+id/fcd_tv_payment_time"
+                style="@style/Widget.TestApp1.TextView.Main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:maxLines="1"
+                android:text="@tools:sample/lorem/random[0]"
+                android:textAppearance="@style/TextAppearance.TestApp1.Body01" />
+
+            <TextView
+                android:id="@+id/fcd_tv_cashback_terms_label"
+                style="@style/Widget.TestApp1.TextView.Main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:maxLines="1"
+                android:text="@string/cashback_terms_label"
+                android:textAppearance="@style/TextAppearance.TestApp1.Body000.Bold" />
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/fcd_btn_buy"
+        style="@style/Widget.TestApp1.Button.Buy"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:text="@string/fpd_btn_buy"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+</LinearLayout>
