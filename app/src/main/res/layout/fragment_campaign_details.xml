@@ -1,14 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CampaignDetailsFragment">
+    android:orientation="vertical"
+    tools:context=".details.CampaignDetailsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        tools:visibility="invisible">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/fcd_tv_name"
+            style="@style/Widget.TestApp1.TextView.Main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:maxLines="6"
+            android:text="@tools:sample/lorem/random[0]"
+            android:textAppearance="@style/TextAppearance.TestApp1.Body000.Bold" />
+
+        <ImageView
+            android:id="@+id/fcd_iv_campaign"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_small"
+            android:contentDescription="@string/desc_campaign_image"
+            tools:ignore="ImageContrastCheck"
+            tools:srcCompat="@android:drawable/button_onoff_indicator_on" />
+
+        <TextView
+            android:id="@+id/fcd_tv_price"
+            style="@style/Widget.TestApp1.TextView.ProductPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_small"
+            android:textAppearance="@style/TextAppearance.TestApp1.Body0000.Bold"
+            tools:text="999,00 RUB" />
+
+        <TextView
+            android:id="@+id/fcd_tv_cashback_label"
+            style="@style/Widget.TestApp1.TextView.Main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_huge"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:text="@string/cashback_label"
+            android:textAppearance="@style/TextAppearance.TestApp1.Body000.Bold" />
+
+        <TextView
+            android:id="@+id/fcd_tv_cashback"
+            style="@style/Widget.TestApp1.TextView.Main.Cashback.Details"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:text="@string/cashback_stub"
+            android:textAppearance="@style/TextAppearance.TestApp1.Body1"
+            tools:ignore="TextContrastCheck" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

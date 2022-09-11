@@ -1,7 +1,6 @@
 package com.example.testapp1.search
 
 import android.graphics.drawable.Drawable
-import android.util.Log
 import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
@@ -11,16 +10,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.testapp1.BuildConfig
-import com.example.testapp1.OnItemClickListener
 import com.example.testapp1.databinding.ItemProductBinding
 import com.example.testapp1.login.step.setImageFromUrl
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ProductsAdapter(
-    private val listener: OnItemClickListener
+    private val listener: OnProductItemClickListener
 ) : ListAdapter<Product, ProductsAdapter.ViewHolder>(DiffCallback) {
 
     private val imageCache = SparseArray<Drawable>(itemCount)
@@ -39,7 +35,7 @@ class ProductsAdapter(
 
     class ViewHolder(
         private var binding: ItemProductBinding,
-        private val listener: OnItemClickListener,
+        private val listener: OnProductItemClickListener,
         private val imageCache: SparseArray<Drawable>,
         private val campaignImageCache: SparseArray<Drawable>
     ) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
@@ -68,7 +64,7 @@ class ProductsAdapter(
         }
 
         override fun onClick(v: View?) {
-            listener.onItemClick(v!!, layoutPosition)
+            listener.onProductItemClick(v!!, layoutPosition)
         }
     }
 
@@ -85,4 +81,8 @@ class ProductsAdapter(
         val product = getItem(position)
         holder.bind(product, position)
     }
+}
+
+interface OnProductItemClickListener {
+    fun onProductItemClick(v: View, position: Int)
 }

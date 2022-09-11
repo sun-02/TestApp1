@@ -21,9 +21,7 @@
     <string name="snack_msg_no_connection">Нет связи с сервером.%nПроверьте интернет соединение.</string>
     <string name="snack_msg_rest_error">Ошибка обращения к серверу.%nПопробуйте еще раз.</string>
     <string name="snack_btn_retry">Повторить</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_login">LoginActivity</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
@@ -37,5 +35,10 @@
     <string name="cashback_stub">до 8,00%</string>
     <string name="desc_campaign_image">Campaign image</string>
     <string name="desc_product_image">Product image</string>
+    <string name="cashback_label">Кешбэк</string>
+    <string name="cashback_time_interval_label">Время начисления кешбэка</string>
+    <string name="cashback_terms_label">Условия</string>
+    <string name="fpd_btn_buy">Купить с кешбэком</string>
+
 
 </resources>

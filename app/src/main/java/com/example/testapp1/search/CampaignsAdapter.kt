@@ -10,15 +10,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.testapp1.OnItemClickListener
 import com.example.testapp1.databinding.ItemCampaignBinding
 import com.example.testapp1.login.step.setImageFromUrl
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CampaignsAdapter(
-    private val listener: OnItemClickListener
+    private val listener: OnCampaignItemClickListener
 ) : ListAdapter<Campaign, CampaignsAdapter.ViewHolder>(DiffCallback) {
 
     private val imageCache = SparseArray<Drawable>(itemCount)
@@ -36,7 +34,7 @@ class CampaignsAdapter(
 
     class ViewHolder(
         private val binding: ItemCampaignBinding,
-        private val listener: OnItemClickListener,
+        private val listener: OnCampaignItemClickListener,
         private val imageCache: SparseArray<Drawable>
         ) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
@@ -57,7 +55,7 @@ class CampaignsAdapter(
         }
 
         override fun onClick(v: View?) {
-            listener.onItemClick(v!!, layoutPosition)
+            listener.onCampaignItemClick(v!!, layoutPosition)
         }
     }
 
@@ -73,4 +71,8 @@ class CampaignsAdapter(
         val campaign = getItem(position)
         holder.bind(campaign, position)
     }
+}
+
+interface OnCampaignItemClickListener {
+    fun onCampaignItemClick(v: View, position: Int)
 }

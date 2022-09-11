@@ -1,28 +1,40 @@
 package com.example.testapp1.search
 
 import android.os.Bundle
+import android.os.Parcelable
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testapp1.BuildConfig
-import com.example.testapp1.OnItemClickListener
 import com.example.testapp1.R
 import com.example.testapp1.databinding.FragmentSearchBinding
+import com.example.testapp1.details.CampaignDetailsFragment
+import com.example.testapp1.details.ProductDetailsFragment
+import com.example.testapp1.login.step.two.LoginStepTwoFragment
 import com.google.android.material.snackbar.Snackbar
 
 private const val SESSION_ID = "SessionId"
 private const val TAG = "SearchFragment"
+private const val CAMPAIGNS = "Campaigns"
+private const val PRODUCTS = "Products"
+private const val CAMPAIGN = "Campaign"
+private const val PRODUCT = "Product"
 
-class SearchFragment : Fragment(), OnItemClickListener {
+class SearchFragment : Fragment(), OnCampaignItemClickListener, OnProductItemClickListener {
+
+    private var _campaigns: List<Campaign>? = null
+    private val campaigns get() = _campaigns!!
+
+    private var _products: List<Product>? = null
+    private val products get() = _products!!
 
     private var _campaignsAdapter: CampaignsAdapter? = null
     private val campaignsAdapter get() = _campaignsAdapter!!
@@ -79,8 +91,8 @@ class SearchFragment : Fragment(), OnItemClickListener {
         viewModel.searchResponseData.observe(viewLifecycleOwner) { responseData ->
             if (BuildConfig.DEBUG) Log.d(TAG, "Got responseData $responseData")
 
-            val campaigns = responseData.campaigns
-            val products = responseData.products
+            _campaigns = responseData.campaigns
+            _products = responseData.products
 
             if (campaigns.isEmpty()) {
                 listDivider.visibility = View.GONE
@@ -97,6 +109,26 @@ class SearchFragment : Fragment(), OnItemClickListener {
 //        viewModel.queryForActions("iphone%12")
     }
 
+    override fun onCampaignItemClick(v: View, position: Int) {
+        parentFragmentManager.commit {
+            val bundle = Bundle()
+            bundle.putParcelable(CAMPAIGN, campaigns[position])
+            replace(R.id.fragment_container_view, CampaignDetailsFragment::class.java, bundle)
+            setReorderingAllowed(true)
+            addToBackStack(null)
+        }
+    }
+
+    override fun onProductItemClick(v: View, position: Int) {
+        parentFragmentManager.commit {
+            val bundle = Bundle()
+            bundle.putParcelable(PRODUCT, products[position])
+            replace(R.id.fragment_container_view, ProductDetailsFragment::class.java, bundle)
+            setReorderingAllowed(true)
+            addToBackStack(null)
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _campaignsAdapter = null
@@ -104,9 +136,7 @@ class SearchFragment : Fragment(), OnItemClickListener {
         binding.fsRvCampaigns.adapter = null
         binding.fsRvProducts.adapter = null
         _binding = null
-    }
-
-    override fun onItemClick(v: View, position: Int) {
-        Snackbar.make(v, "$position", Snackbar.LENGTH_LONG).show()
+        _campaigns = null
+        _products = null
     }
 }

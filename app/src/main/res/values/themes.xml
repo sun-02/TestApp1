@@ -99,7 +99,10 @@
     </style>
 
     <style name="Widget.TestApp1.TextView.Main.Cashback">
-        <item name="android:layout_margin">@dimen/margin_small</item>
+        <item name="android:layout_marginTop">@dimen/margin_small</item>
+        <item name="android:layout_marginBottom">@dimen/margin_small</item>
+        <item name="android:layout_marginStart">@dimen/margin_small</item>
+        <item name="android:layout_marginEnd">@dimen/margin_small</item>
         <item name="android:paddingStart">@dimen/margin_small</item>
         <item name="android:paddingEnd">@dimen/margin_small</item>
         <item name="android:textColor">?android:attr/colorBackground</item>
@@ -108,6 +111,16 @@
         <item name="android:layout_gravity">bottom|start|left</item>
         <item name="android:background">@drawable/cashback_background</item>
         <item name="android:elevation">@dimen/elevation</item>
+    </style>
+
+    <style name="Widget.TestApp1.TextView.Main.Cashback.Details">
+        <item name="android:layout_marginStart">@dimen/margin_medium</item>
+        <item name="android:layout_marginEnd">@dimen/margin_medium</item>
+        <item name="android:paddingStart">@dimen/margin_small_plus</item>
+        <item name="android:paddingEnd">@dimen/margin_small_plus</item>
+        <item name="android:layout_height">@dimen/cashback_height_plus</item>
+        <item name="android:background">@drawable/cashback_background_plus</item>
+        <item name="android:paddingTop">2dp</item>
     </style>
 
     <style name="Widget.TestApp1.TextView.Main.EditTextLabel">
@@ -120,6 +133,12 @@
         <item name="android:layout_marginEnd">@dimen/margin_huge_plus</item>
     </style>
 
+    <style name="Widget.TestApp1.Button.Buy">
+        <item name="android:layout_marginStart">@dimen/margin_medium</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginEnd">@dimen/margin_medium</item>
+    </style>
+
 
     <style name="TextAppearance.TestApp1.Headline4.5" parent="TextAppearance.MaterialComponents.Headline4">
         <item name="android:textSize">@dimen/headline4_5_size</item>
@@ -127,6 +146,18 @@
     </style>
 
     <style name="TextAppearance.TestApp1.Subtitle1.Bold" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.TestApp1.Body1.Bold" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.TestApp1.Body01" parent="TextAppearance.TestApp1.Body0">
+        <item name="android:textSize">@dimen/body01_size</item>
+    </style>
+
+    <style name="TextAppearance.TestApp1.Body01.Bold">
         <item name="android:textStyle">bold</item>
     </style>
 
@@ -142,13 +173,24 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="TextAppearance.TestApp1.Body01" parent="TextAppearance.TestApp1.Body0">
-        <item name="android:textSize">@dimen/body01_size</item>
+    <style name="TextAppearance.TestApp1.Body000" parent="TextAppearance.TestApp1.Body00">
+        <item name="android:textSize">@dimen/body000_size</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
     </style>
 
-    <style name="TextAppearance.TestApp1.Body01.Bold">
+    <style name="TextAppearance.TestApp1.Body000.Bold">
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="TextAppearance.TestApp1.Body0000" parent="TextAppearance.TestApp1.Body000">
+        <item name="android:textSize">@dimen/body0000_size</item>
+    </style>
+
+    <style name="TextAppearance.TestApp1.Body0000.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
 
     <style name="TextAppearance.TestApp1.Body1" parent="TextAppearance.MaterialComponents.Body1">
 

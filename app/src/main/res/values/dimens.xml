@@ -8,11 +8,14 @@
     <dimen name="card_corner_radius">8dp</dimen>
     <dimen name="campaign_image_min_size">150dp</dimen>
     <dimen name="cashback_corner_radius">11dp</dimen>
+    <dimen name="cashback_corner_radius_plus">14dp</dimen>
     <dimen name="cashback_height">22dp</dimen>
+    <dimen name="cashback_height_plus">28dp</dimen>
 
     <!-- margins -->
     <dimen name="margin_tiny">4dp</dimen>
     <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_small_plus">12dp</dimen>
     <dimen name="margin_medium">16dp</dimen>
     <dimen name="margin_large">24dp</dimen>
     <dimen name="margin_large_plus">28dp</dimen>
@@ -21,6 +24,8 @@
 
     <!-- font attrs -->
     <dimen name="body0_size">20sp</dimen>
+    <dimen name="body000_size">22sp</dimen>
+    <dimen name="body0000_size">30sp</dimen>
     <dimen name="body01_size">18sp</dimen>
     <dimen name="headline4_5_size">34sp</dimen>
     <integer name="body00_letter_spacing">0</integer>
