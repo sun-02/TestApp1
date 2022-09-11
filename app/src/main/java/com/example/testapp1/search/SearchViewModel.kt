@@ -26,10 +26,10 @@ class SearchViewModel : ViewModel() {
     private var _errorMsg: SingleLiveEvent<ServerResponse?> = SingleLiveEvent()
     val errorMsg: LiveData<ServerResponse?> get() = _errorMsg
 
-    fun queryForActions(query: String) {
+    fun queryForActions(query: String, sessionId: String) {
         val url = URL("https://utcoin.one/loyality/search?search_string=$query")
         viewModelScope.launch(Dispatchers.IO) {
-            val response = getResponse(url)
+            val response = getResponse(url, Pair("Cookie", "sessionId=$sessionId"))
             if (BuildConfig.DEBUG) Log.d(TAG, "Got actions response $response")
             if (response.code in 200..299) {
                 _searchResponseData.postValue(parseSearchResponse(response.body))

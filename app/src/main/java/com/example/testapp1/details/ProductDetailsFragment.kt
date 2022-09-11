@@ -103,7 +103,13 @@ class ProductDetailsFragment : Fragment() {
             fpdBtnBuy.setOnClickListener { v ->
                 Snackbar.make(v, "Bought!", Snackbar.LENGTH_SHORT).show()
             }
+
+            fpdActionBar.setNavigationOnClickListener {
+                parentFragmentManager.popBackStack()
+            }
         }
+
+
     }
 
     override fun onDestroyView() {

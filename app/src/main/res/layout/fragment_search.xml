@@ -7,6 +7,25 @@
     android:orientation="vertical"
     tools:context=".search.SearchFragment">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/fs_action_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:menu="@menu/menu_search">
+
+                <EditText
+                    android:id="@+id/fs_et_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/min_height"
+                    android:layout_marginEnd="@dimen/margin_large"
+                    android:background="@null"
+                    android:hint="@string/search_label"
+                    android:inputType="textCapWords"
+                    tools:ignore="TextContrastCheck"
+                    android:autofillHints="" />
+
+        </androidx.appcompat.widget.Toolbar>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/fs_rv_campaigns"
             android:layout_width="match_parent"
@@ -25,6 +44,7 @@
             android:layout_marginTop="@dimen/margin_small"
             android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginEnd="@dimen/margin_medium"
+            android:visibility="gone"
             android:background="@color/light_gray" />
 
         <androidx.recyclerview.widget.RecyclerView

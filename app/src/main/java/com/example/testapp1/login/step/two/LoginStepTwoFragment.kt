@@ -1,5 +1,6 @@
 package com.example.testapp1.login.step.two
 
+import android.content.Context
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.*
@@ -7,10 +8,12 @@ import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.StyleSpan
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.edit
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
 import com.example.testapp1.BuildConfig
@@ -110,12 +113,30 @@ class LoginStepTwoFragment : Fragment() {
         }
 
         viewModel.loginStepTwoResponseData.observe(viewLifecycleOwner) { responseData ->
+            val sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE)
+            sharedPref.edit {
+                putString(SESSION_ID, responseData.sessionId)
+            }
+
+            clearBackStack()
             parentFragmentManager.commit {
                 val bundle = Bundle()
                 bundle.putString(SESSION_ID, responseData.sessionId)
                 replace(R.id.fragment_container_view, SearchFragment::class.java, bundle)
                 setReorderingAllowed(true)
             }
+        }
+
+        binding.lstActionBar.setNavigationOnClickListener {
+            parentFragmentManager.popBackStack()
+        }
+    }
+
+    private fun clearBackStack() {
+        val fm = parentFragmentManager
+        if (fm.backStackEntryCount > 0) {
+            val entry = fm.getBackStackEntryAt(0)
+            fm.popBackStack(entry.id, FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
     }
 

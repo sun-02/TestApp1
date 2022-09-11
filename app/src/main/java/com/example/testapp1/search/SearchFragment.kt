@@ -1,7 +1,6 @@
 package com.example.testapp1.search
 
 import android.os.Bundle
-import android.os.Parcelable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -18,15 +17,14 @@ import com.example.testapp1.R
 import com.example.testapp1.databinding.FragmentSearchBinding
 import com.example.testapp1.details.CampaignDetailsFragment
 import com.example.testapp1.details.ProductDetailsFragment
-import com.example.testapp1.login.step.two.LoginStepTwoFragment
+import com.example.testapp1.login.step.one.LoginStepOneFragment
 import com.google.android.material.snackbar.Snackbar
 
 private const val SESSION_ID = "SessionId"
 private const val TAG = "SearchFragment"
-private const val CAMPAIGNS = "Campaigns"
-private const val PRODUCTS = "Products"
 private const val CAMPAIGN = "Campaign"
 private const val PRODUCT = "Product"
+private const val ERROR_MESSAGE_CODE = "loyality.session.not.found"
 
 class SearchFragment : Fragment(), OnCampaignItemClickListener, OnProductItemClickListener {
 
@@ -91,22 +89,54 @@ class SearchFragment : Fragment(), OnCampaignItemClickListener, OnProductItemCli
         viewModel.searchResponseData.observe(viewLifecycleOwner) { responseData ->
             if (BuildConfig.DEBUG) Log.d(TAG, "Got responseData $responseData")
 
+            if (!responseData.successful && responseData.errorMessageCode == ERROR_MESSAGE_CODE) {
+                startLoginStepOneFragment()
+            }
+
             _campaigns = responseData.campaigns
             _products = responseData.products
 
             if (campaigns.isEmpty()) {
-                listDivider.visibility = View.GONE
                 rvCampaigns.visibility = View.GONE
+                listDivider.visibility = View.GONE
+                if (products.isEmpty()) {
+                    Snackbar.make(
+                        requireView(),
+                        requireContext().getString(R.string.msg_found_nothing),
+                        Snackbar.LENGTH_LONG
+                    ).show()
+                }
             } else {
                 campaignsAdapter.submitList(campaigns)
-                listDivider.visibility = View.VISIBLE
                 rvCampaigns.visibility = View.VISIBLE
+                listDivider.visibility = View.VISIBLE
             }
             productsAdapter.submitList(products)
         }
 
-        viewModel.queryForActions("aliexpress")
-//        viewModel.queryForActions("iphone%12")
+        viewModel.errorMsg.observe(viewLifecycleOwner) { errMsg ->
+            errMsg?.apply {
+                val snackMsg = if (code == 0) {
+                    if (BuildConfig.DEBUG) Log.d(TAG, "Connection error: $body")
+                    getString(R.string.snack_msg_no_connection)
+                } else {
+                    if (BuildConfig.DEBUG) Log.d(TAG, "REST error: $code - $body")
+                    getString(R.string.snack_msg_rest_error)
+                }
+                Snackbar.make(binding.root, snackMsg, Snackbar.LENGTH_LONG).show()
+            }
+        }
+
+        binding.fsActionBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.search -> {
+                    val query = binding.fsEtSearch.text.toString()
+                    viewModel.queryForActions(query, sessionId)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     override fun onCampaignItemClick(v: View, position: Int) {
@@ -126,6 +156,12 @@ class SearchFragment : Fragment(), OnCampaignItemClickListener, OnProductItemCli
             replace(R.id.fragment_container_view, ProductDetailsFragment::class.java, bundle)
             setReorderingAllowed(true)
             addToBackStack(null)
+        }
+    }
+
+    private fun startLoginStepOneFragment() {
+        parentFragmentManager.commit {
+            replace(R.id.fragment_container_view, LoginStepOneFragment())
         }
     }
 

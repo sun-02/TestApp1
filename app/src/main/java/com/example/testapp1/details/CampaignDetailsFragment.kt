@@ -5,20 +5,18 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.util.TypedValue
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.ColorInt
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.testapp1.databinding.FragmentCampaignDetailsBinding
 import com.example.testapp1.login.step.setImageFromUrl
 import com.example.testapp1.search.Campaign
-import com.example.testapp1.search.CampaignsAdapter
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -98,6 +96,10 @@ class CampaignDetailsFragment : Fragment() {
 
             fcdBtnBuy.setOnClickListener { v ->
                 Snackbar.make(v, "Bought!", Snackbar.LENGTH_SHORT).show()
+            }
+
+            fcdActionBar.setNavigationOnClickListener {
+                parentFragmentManager.popBackStack()
             }
         }
     }

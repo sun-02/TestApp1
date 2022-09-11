@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
-import com.example.testapp1.R
 import com.example.testapp1.databinding.ActivityMainBinding
 import com.example.testapp1.login.step.one.LoginStepOneFragment
 import com.example.testapp1.search.SearchFragment
@@ -19,17 +18,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.actionBar)
 
-        startSearchFragment("")
-
-//        val sharedPref = getPreferences(Context.MODE_PRIVATE)
-//        val sessionId = sharedPref.getString(SESSION_ID, null)
-//        if (sessionId != null) {
-//            startSearchFragment(sessionId)
-//        } else {
-//            startLoginStepOneFragment()
-//        }
+        val sharedPref = getPreferences(Context.MODE_PRIVATE)
+        val sessionId = sharedPref.getString(SESSION_ID, null)
+        if (sessionId != null) {
+            startSearchFragment(sessionId)
+        } else {
+            startLoginStepOneFragment()
+        }
     }
 
     private fun startSearchFragment(sessionId: String) {

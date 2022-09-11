@@ -39,6 +39,8 @@
     <string name="cashback_time_interval_label">Время начисления кешбэка</string>
     <string name="cashback_terms_label">Условия</string>
     <string name="fpd_btn_buy">Купить с кешбэком</string>
+    <string name="search_label">Поиск</string>
+    <string name="msg_found_nothing">По вашему запросу ничего не нашлось</string>
 
 
 </resources>

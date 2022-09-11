@@ -7,13 +7,15 @@
         <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/drawable/cashback_background.xml" value="0.133" />
         <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/drawable/cashback_background_plus.xml" value="0.1325" />
         <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/drawable/empty_frame.xml" value="0.1325" />
+        <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/drawable/ic_arrow_16dp.xml" value="0.1" />
+        <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/drawable/ic_search_24dp.xml" value="0.1325" />
         <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/drawable/item_divider.xml" value="0.1" />
         <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/drawable/progress_bar.xml" value="0.1325" />
         <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/drawable/tab_indicator_default.xml" value="0.1325" />
         <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/drawable/tab_indicator_selected.xml" value="0.1325" />
         <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/drawable/tab_selector.xml" value="0.1325" />
         <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/layout/fragment_campaign_details.xml" value="0.33" />
+        <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/layout/fragment_campaign_details.xml" value="0.27765237020316025" />
         <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/layout/fragment_login_step_one.xml" value="0.33" />
         <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/layout/fragment_login_step_two.xml" value="0.33" />
         <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/layout/fragment_product_details.xml" value="0.33" />
@@ -22,6 +24,7 @@
         <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/layout/item_product.xml" value="0.5" />
         <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/layout/item_product_images.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/layout/item_terms.xml" value="0.33" />
+        <entry key="..\:/Users/sun/AndroidStudioProjects/Entrance_Tests/TestApp1/app/src/main/res/menu/menu_search.xml" value="0.1434799841458581" />
         <entry key="..\:/Users/sun/AndroidStudioProjects/test/TestApp1/app/src/main/res/layout/activity_main.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/sun/AndroidStudioProjects/test/TestApp1/app/src/main/res/layout/fragment_login_step_one.xml" value="0.33" />
         <entry key="..\:/Users/sun/AndroidStudioProjects/test/TestApp1/app/src/main/res/layout/fragment_login_step_two.xml" value="0.33" />

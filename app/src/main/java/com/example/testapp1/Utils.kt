@@ -21,8 +21,11 @@ import java.io.InputStream
 import java.net.HttpURLConnection
 import java.net.URL
 
-fun getResponse(url: URL): ServerResponse {
+fun getResponse(url: URL, header: Pair<String, String>? = null): ServerResponse {
     val urlConnection: HttpURLConnection = url.openConnection() as HttpURLConnection
+    if (header != null) {
+        urlConnection.addRequestProperty(header.first, header.second)
+    }
     val response = try {
         val code = urlConnection.responseCode
         val inputStream: InputStream = BufferedInputStream(urlConnection.inputStream)

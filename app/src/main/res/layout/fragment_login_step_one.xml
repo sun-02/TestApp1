@@ -6,6 +6,11 @@
     tools:context=".login.step.one.LoginStepOneFragment"
     android:orientation="vertical">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/lso_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize" />
+
     <TextView
         android:id="@+id/lso_tv_header"
         style="@style/Widget.TestApp1.TextView.Main"

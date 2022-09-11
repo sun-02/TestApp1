@@ -49,7 +49,8 @@ class ProductsAdapter(
                     ipTvPrice.text = it.price
                     if (imageCache[position] == null) {
                         scope.launch(Dispatchers.IO) {
-                            imageCache[position] = ipIvProduct.setImageFromUrl(it.imageUrls[1])
+                            val i = if (it.imageUrls.size > 1) 1 else 0
+                            imageCache[position] = ipIvProduct.setImageFromUrl(it.imageUrls[i])
                         }
                     }
                     if (imageCache[position] == null) {
